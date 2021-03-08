@@ -1,0 +1,40 @@
+# https://github.com/probot/settings
+
+labels:
+    - name: bug
+      color: ee0701
+
+    - name: dependencies
+      color: 0366d6
+
+    - name: enhancement
+      color: 0e8a16
+
+    - name: question
+      color: cc317c
+
+    - name: security
+      color: ee0701
+
+    - name: stale
+      color: eeeeee
+
+repository:
+    allow_merge_commit: true
+    allow_rebase_merge: false
+    allow_squash_merge: true
+    default_branch: master
+    description: "EU Login API Authentication Bundle, authenticate requests from European Commission corporate service 'EU Login' using OpenID Connect protocol."
+    homepage: https://ecphp-eu-login-api-authentication-bundle.readthedocs.io
+    topics: authentication,eu-login,jwt,openid-connect
+    has_downloads: true
+    has_issues: true
+    has_pages: false
+    has_projects: false
+    has_wiki: false
+    name: eu-login-api-authentication-bundle
+    private: false
+
+teams:
+    - name: core
+      permission: push

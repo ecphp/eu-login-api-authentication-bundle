@@ -1,0 +1,49 @@
+{
+    "name": "ecphp/eu-login-api-authentication-bundle",
+    "type": "symfony-bundle",
+    "description": "EU Login API Authentication Bundle, authenticate requests from European Commission corporate service 'EU Login' using OpenID Connect protocol.",
+    "keywords": [
+        "authentication",
+        "jwt",
+        "EU Login"
+    ],
+    "license": "BSD-3-Clause",
+    "require": {
+        "php": ">= 7.4",
+        "facile-it/php-jose-verifier": "^0.3",
+        "facile-it/php-openid-client": "dev-master#cb462ecdf9d9dfd51d35eb6f984a9cb9e91b8a9b",
+        "symfony/dependency-injection": "^5.2",
+        "symfony/framework-bundle": "^5.2",
+        "symfony/psr-http-message-bridge": "^2.1",
+        "web-token/jwt-signature-algorithm-ecdsa": "^2.2",
+        "web-token/jwt-signature-algorithm-hmac": "^2.2"
+    },
+    "require-dev": {
+        "drupol/php-conventions": "^3.0.2",
+        "friends-of-phpspec/phpspec-code-coverage": "^6.0",
+        "infection/infection": "^0.21.0",
+        "infection/phpspec-adapter": "^0.1.2",
+        "nyholm/psr7": "^1",
+        "phpspec/phpspec": "^7.0",
+        "symfony/http-client": "^5.2",
+        "symfony/security-bundle": "^5.2",
+        "symfony/var-dumper": "^5.2",
+        "vimeo/psalm": "^4.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "EcPhp\\EuLoginApiAuthenticationBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "spec\\EcPhp\\EuLoginApiAuthenticationBundle\\": "./spec/EcPhp/EuLoginApiAuthenticationBundle/",
+            "tests\\EcPhp\\EuLoginApiAuthenticationBundle\\": "./tests/src"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "grumphp": "./vendor/bin/grumphp run"
+    }
+}
