@@ -10,10 +10,10 @@ parameters:
       verbose: true
     clover_coverage:
       clover_file: build/logs/clover.xml
-      level: 80
+      level: 5
     infection:
-      threads: 10
+      threads: 2
       test_framework: phpspec
       configuration: infection.json.dist
-      min_msi: 50
-      min_covered_msi: 50
+      min_msi: 5
+      min_covered_msi: 5
