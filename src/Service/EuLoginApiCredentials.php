@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace EcPhp\EuLoginApiAuthenticationBundle\Service;
 
-use Exception;
-use Facile\JoseVerifier\Exception\InvalidTokenException;
+use EcPhp\EuLoginApiAuthenticationBundle\Exception\EuLoginApiAuthenticationException;
 use Facile\JoseVerifier\JWK\JwksProviderBuilder;
 use Facile\JoseVerifier\JWK\MemoryJwksProvider;
 use Facile\JoseVerifier\TokenVerifierInterface;
@@ -20,8 +19,11 @@ use Facile\OpenIDClient\Service\Builder\IntrospectionServiceBuilder;
 use Facile\OpenIDClient\Service\IntrospectionService;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
+use Throwable;
 
+use function array_key_exists;
 use function count;
+use function is_object;
 
 final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
 {
@@ -44,22 +46,54 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
     {
         // 0. Get the pop token from the request.
         // 1. Decode the payload of the pop token.
-        // 2. Get the AT Token and submit for introspection to EU Login.
-        // 3. With the response, get the public key and verify the pop token.
+        // 2. Get the AT Token from the payload and submit it for introspection to EU Login.
+        // 3. From the response, get the public key and verify the pop token signature.
+        // 4. Return the response claims if the signature match.
 
         // Step 0.
-        $token = $this->getToken($request);
+        try {
+            $token = $this->getPopToken($request);
+        } catch (Throwable $e) {
+            throw EuLoginApiAuthenticationException::unableToGetCredentials($e);
+        }
 
         // Step 1.
-        $accessToken = $this->getAccessToken($token);
+        try {
+            $accessToken = $this->getAccessToken($token);
+        } catch (Throwable $e) {
+            throw EuLoginApiAuthenticationException::unableToGetCredentials($e);
+        }
 
         // Step 2.
-        $response = $this
-            ->getIntrospectionService()
-            ->introspect(
-                $this->getOpenIdClient(),
-                $accessToken
+        try {
+            $response = $this
+                ->getIntrospectionService()
+                ->introspect(
+                    $this->getOpenIdClient(),
+                    $accessToken
+                );
+        } catch (Throwable $e) {
+            throw EuLoginApiAuthenticationException::unableToGetCredentials(
+                EuLoginApiAuthenticationException::unableToIntrospectAccessToken(
+                    $this->getOpenIdClient()->getIssuer()->getMetadata()->getIntrospectionEndpoint(),
+                    $accessToken,
+                    $this->configuration['environment'],
+                    $e
+                )
             );
+        }
+
+        if (false === array_key_exists('active', $response)) {
+            throw EuLoginApiAuthenticationException::unableToGetCredentials(
+                EuLoginApiAuthenticationException::invalidIntrospostionEndpointResponse()
+            );
+        }
+
+        if (false === $response['active']) {
+            throw EuLoginApiAuthenticationException::unableToGetCredentials(
+                EuLoginApiAuthenticationException::invalidOrRevokedToken()
+            );
+        }
 
         // Step 3.
         // Do the Access Token verification. (mandatory)
@@ -70,8 +104,10 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
         // Return the payload if successful. Throws otherwise.
         try {
             $this->getTokenVerifier($response)->verify($token);
-        } catch (InvalidTokenException $e) {
-            throw $e;
+        } catch (Throwable $e) {
+            throw EuLoginApiAuthenticationException::unableToGetCredentials(
+                EuLoginApiAuthenticationException::unableToVerifyToken($token, $e)
+            );
         }
 
         return $response;
@@ -79,21 +115,9 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
 
     public function hasPopToken(RequestInterface $request): bool
     {
-        if (false === $request->hasHeader('Authorization')) {
-            return false;
-        }
-
-        $headerParts = explode(' ', $request->getHeaderLine('Authorization'));
-
-        if (2 !== count($headerParts)) {
-            return false;
-        }
-
-        if ('pop' !== $headerParts[0]) {
-            return false;
-        }
-
-        if (3 !== count(explode('.', $headerParts[1]))) {
+        try {
+            $this->getPopToken($request);
+        } catch (Throwable $e) {
             return false;
         }
 
@@ -102,19 +126,27 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
 
     private function getAccessToken(string $popToken): string
     {
-        [, $payload,] = array_map(
-            'json_decode',
-            array_map(
-                'base64_decode',
-                explode(
-                    '.',
-                    $popToken,
-                    3
+        try {
+            [, $payload,] = array_map(
+                'json_decode',
+                array_map(
+                    'base64_decode',
+                    explode(
+                        '.',
+                        $popToken,
+                        3
+                    )
                 )
-            )
-        );
+            );
+        } catch (Throwable $e) {
+            throw EuLoginApiAuthenticationException::unableToGetAccessTokenFromPopToken($popToken, $e);
+        }
 
-        return $payload->at;
+        if (is_object($payload) && property_exists($payload, 'at')) {
+            return $payload->at;
+        }
+
+        throw EuLoginApiAuthenticationException::unableToGetAccessTokenFromPopToken($popToken);
     }
 
     private function getClientMetadata(): ClientMetadataInterface
@@ -139,19 +171,15 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
     {
         $configuration = $this->configuration;
 
-        $metadataProviderBuilder = (new MetadataProviderBuilder())
-            ->setHttpClient($this->client);
-
         return (new IssuerBuilder())
             ->setJwksProviderBuilder($this->getJwksProviderBuilder())
-            ->setMetadataProviderBuilder($metadataProviderBuilder)
+            ->setMetadataProviderBuilder((new MetadataProviderBuilder())->setHttpClient($this->client))
             ->build($configuration['environment']);
     }
 
     private function getJwksProviderBuilder(): JwksProviderBuilder
     {
-        return (new JwksProviderBuilder())
-            ->setHttpClient($this->client);
+        return (new JwksProviderBuilder())->setHttpClient($this->client);
     }
 
     private function getOpenIdClient(): ClientClientInterface
@@ -164,13 +192,27 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
             ->build();
     }
 
-    private function getToken(RequestInterface $request): string
+    private function getPopToken(RequestInterface $request): string
     {
-        if (false === $this->hasPopToken($request)) {
-            throw new Exception('Unable to get the token from the request.');
+        if (false === $request->hasHeader('Authorization')) {
+            throw EuLoginApiAuthenticationException::noAuthorizationHeaderInRequest($request);
         }
 
-        return mb_substr($request->getHeaderLine('Authorization'), 4);
+        $headerParts = explode(' ', $request->getHeaderLine('Authorization'));
+
+        if (2 !== count($headerParts)) {
+            throw EuLoginApiAuthenticationException::invalidAuthorizationHeader($headerParts);
+        }
+
+        if ('pop' !== $headerParts[0]) {
+            throw EuLoginApiAuthenticationException::invalidAuthorizationHeaderPrefix($headerParts[0]);
+        }
+
+        if (3 !== count(explode('.', $headerParts[1]))) {
+            throw EuLoginApiAuthenticationException::invalidJWTTokenStructure($headerParts[1]);
+        }
+
+        return $headerParts[1];
     }
 
     private function getTokenVerifier(array $payload): TokenVerifierInterface
@@ -191,7 +233,7 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
         $configuration['environment'] = self::EU_LOGIN_ENVS[$configuration['environment']] ?? '';
 
         if ('' === $configuration['environment']) {
-            throw new Exception('Wrong environment.');
+            throw EuLoginApiAuthenticationException::invalidEuLoginEnvironment($configuration['environment']);
         }
 
         return $configuration;

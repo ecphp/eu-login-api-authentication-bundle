@@ -15,6 +15,7 @@ use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+use Throwable;
 
 final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuthenticator
 {
@@ -43,7 +44,13 @@ final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuth
      */
     public function getCredentials(Request $request): array
     {
-        return $this->euLoginApiCredentials->getCredentials($this->toPsr($request));
+        try {
+            $credentials = $this->euLoginApiCredentials->getCredentials($this->toPsr($request));
+        } catch (Throwable $e) {
+            throw new AuthenticationException('Unable to get credentials.', 0, $e);
+        }
+
+        return $credentials;
     }
 
     /**
@@ -60,7 +67,7 @@ final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuth
      */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
-        return new Response('Auth header required', 401);
+        return new Response('Authentication failed', 401);
     }
 
     /**
@@ -76,7 +83,7 @@ final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuth
      */
     public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
-        return new Response('Auth header required', 401);
+        return new Response('Authentication failed', 401);
     }
 
     /**
