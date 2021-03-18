@@ -32,4 +32,10 @@ return static function (ContainerConfigurator $container) {
     $container
         ->services()
         ->alias(EuLoginApiCredentialsInterface::class, 'eu_login_api_authentication.service');
+
+    $container
+        ->services()->load('EcPhp\\EuLoginApiAuthenticationBundle\\Controller\\', __DIR__ . '/../../Controller')
+        ->autowire(true)
+        ->autoconfigure(true)
+        ->tag('controller.service_arguments');
 };
