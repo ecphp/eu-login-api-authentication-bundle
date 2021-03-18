@@ -11,7 +11,7 @@
     "require": {
         "php": ">= 7.4",
         "facile-it/php-jose-verifier": "^0.3",
-        "facile-it/php-openid-client": "dev-master#cb462ecdf9d9dfd51d35eb6f984a9cb9e91b8a9b",
+        "facile-it/php-openid-client": "dev-master#d56cbc684495b8aa1f59f698a442333a2eed7a38",
         "symfony/dependency-injection": "^5.2",
         "symfony/framework-bundle": "^5.2",
         "symfony/psr-http-message-bridge": "^2.1",
