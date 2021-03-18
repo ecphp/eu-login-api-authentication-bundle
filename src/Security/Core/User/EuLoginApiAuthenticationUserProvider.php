@@ -21,7 +21,7 @@ final class EuLoginApiAuthenticationUserProvider implements EuLoginApiAuthentica
 
     public function refreshUser(UserInterface $user): UserInterface
     {
-        throw new DomainException('Unsupported method call.');
+        return $user;
     }
 
     public function supportsClass(string $class): bool
