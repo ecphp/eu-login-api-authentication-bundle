@@ -35,7 +35,7 @@ final class EuLoginApiAuthenticationException extends Exception
         return new self(sprintf($message, $environment), 0, $previous);
     }
 
-    public static function invalidIntrospostionEndpointResponse(): self
+    public static function invalidIntrospectionEndpointResponse(): self
     {
         $message = 'The introspection response is supposed to contains an "active" key and it does not.';
 

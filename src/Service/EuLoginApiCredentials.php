@@ -85,7 +85,7 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
 
         if (false === array_key_exists('active', $response)) {
             throw EuLoginApiAuthenticationException::unableToGetCredentials(
-                EuLoginApiAuthenticationException::invalidIntrospostionEndpointResponse()
+                EuLoginApiAuthenticationException::invalidIntrospectionEndpointResponse()
             );
         }
 
@@ -94,6 +94,16 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
                 EuLoginApiAuthenticationException::invalidOrRevokedToken()
             );
         }
+
+        // TODO: Should we add a check to filter the audience ('aud' claim),
+        // TODO: against a list from the configuration?
+        /*
+        if ($this->configuration['audience'] !== []) {
+            if (false === in_array($response['aud'], $this->configuration['audience'], true)) {
+                throw ...;
+            }
+        }
+        */
 
         // Step 3.
         // Do the Access Token verification. (mandatory)
@@ -109,6 +119,8 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
                 EuLoginApiAuthenticationException::unableToVerifyToken($token, $e)
             );
         }
+
+        // TODO: Should we do something with the the $payload->ts claim?
 
         return $response;
     }
