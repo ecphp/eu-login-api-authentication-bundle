@@ -30,3 +30,14 @@ Read more on the [dedicated documentation site][http readthedocs].
 [github actions]: https://github.com/ecphp/eu-login-api-authentication-bundle/actions
 [badge readthedocs]: https://img.shields.io/readthedocs/ecphp-eu-login-api-authentication-bundle?style=flat-square
 [http readthedocs]: https://ecphp-eu-login-api-authentication-bundle.readthedocs.io/
+
+# To enable dev routes
+
+Create a new file `eu-login-api-authentication-bundle.yaml` in
+`config/packages/routes/dev/` with the following content:
+
+```yaml
+eu_login_api_authentication_bundle:
+    resource: '@EuLoginApiAuthenticationBundle/Resources/config/routes/routes.php'
+    prefix: /api
+```
