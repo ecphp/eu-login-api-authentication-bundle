@@ -44,6 +44,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "grumphp": "./vendor/bin/grumphp run"
+        "grumphp": "./vendor/bin/grumphp run",
+        "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
+        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v"
     }
 }
