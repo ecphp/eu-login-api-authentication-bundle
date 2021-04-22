@@ -10,8 +10,12 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">= 7.4",
+        "ext-json": "*",
         "facile-it/php-jose-verifier": "^0.3",
         "facile-it/php-openid-client": "dev-master#d56cbc684495b8aa1f59f698a442333a2eed7a38",
+        "firebase/php-jwt": "^5.2",
+        "psr/http-client": "^1.0",
+        "psr/http-message": "^1.0",
         "symfony/dependency-injection": "^5.2",
         "symfony/framework-bundle": "^5.2",
         "symfony/psr-http-message-bridge": "^2.1",
@@ -44,8 +48,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "grumphp": "./vendor/bin/grumphp run",
         "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
-        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v"
+        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
+        "grumphp": "./vendor/bin/grumphp run"
     }
 }
