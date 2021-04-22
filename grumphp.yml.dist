@@ -2,10 +2,10 @@ imports:
   - { resource: vendor/drupol/php-conventions/config/php73/grumphp.yml }
 
 parameters:
-  tasks.phpstan.configuration: phpstan.neon
+  tasks.license.date_from: 2020
+  tasks.license.holder: ECPHP
+  tasks.license.name: BSD-3-Clause
   extra_tasks:
-    psalm:
-      show_info: true
     phpspec:
       verbose: true
     clover_coverage:
