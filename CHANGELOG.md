@@ -9,10 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Merged
 
+- chore(deps): Bump actions/cache from v2.1.4 to v2.1.5 [`#1`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/1)
 - Create `LocalEuLoginApiCredentials` service that can be used for testing [`#3`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/3)
 
 ### Commits
 
+- ci: Enable automatic release changelog generation. [`17edfed`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/17edfedc7e47e47ba95e7d2da52933d2fb4cc092)
+- docs: Update changelog. [`a1908d8`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/a1908d8bdfadb113921300c28a58524ffb27328e)
 - docs: Update README and documentation accordingly. [`4273dd8`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/4273dd8f1c2dcf8efcde0ca77f0826d6a8f9e862)
 - docs: Add documentation. [`9c16d86`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/9c16d8654a33ea80909b9c09da4c8abce50990a5)
 - Let's be eco-friendly when it comes to package management. [`f4366d5`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/f4366d55ab6a9f1311d129ba324cfb7e5fb1710c)
