@@ -52,7 +52,6 @@ and that will check your project.
 
 .. _PSR-12: https://www.php-fig.org/psr/psr-12/
 .. _drupol/php-conventions: https://github.com/drupol/php-conventions
-.. _Travis CI: https://travis-ci.org/ecphp/eu-login-api-authentication-bundle/builds
 .. _Github Actions: https://github.com/ecphp/eu-login-api-authentication-bundle/actions
 .. _PHPSpec: http://www.phpspec.net/
 .. _PHPInfection: https://github.com/infection/infection

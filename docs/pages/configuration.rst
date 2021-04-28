@@ -41,3 +41,7 @@ In order to do that, follow the following steps:
 
 3. Read the `official Symfony documentation`_ if you want to enable this only
    for a particular `environment`_.
+
+.. _environment: https://symfony.com/doc/current/configuration.html#configuration-environments
+.. _official Symfony documentation: https://symfony.com/doc/current/configuration.html
+.. _EU Login: https://ecas.ec.europa.eu/cas/
