@@ -5,10 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/0.0.1...HEAD)
+## [1.0.0](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/0.0.1...1.0.0)
+
+### Merged
+
+- Create `LocalEuLoginApiCredentials` service that can be used for testing [`#3`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/3)
 
 ### Commits
 
+- docs: Update README and documentation accordingly. [`4273dd8`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/4273dd8f1c2dcf8efcde0ca77f0826d6a8f9e862)
+- docs: Add documentation. [`9c16d86`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/9c16d8654a33ea80909b9c09da4c8abce50990a5)
+- Let's be eco-friendly when it comes to package management. [`f4366d5`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/f4366d55ab6a9f1311d129ba324cfb7e5fb1710c)
+- Disable Infection tests. [`51d8738`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/51d873877e2f508dd6770059086a2370be017b89)
+- ci: Enable Behat tests. [`6d1511c`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/6d1511c5fee4d6e3aef246a6c12d37acd53bc86d)
+- Normalize composer.json [`16afdb5`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/16afdb525e967e3c094d7d43068cbb78a777ebbb)
+- Add Behat tests and features. [`528be25`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/528be25bc1f7ededba6db20f3546c9740b8f65af)
+- refactor: Add a LocalEuLoginApiCredentials service to be used for testing. [`077f078`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/077f0787b0f46b5ddab81a5fc1a2fef490118d54)
+- Add token route to the bundle. [`4b32fdc`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/4b32fdc840bf93886be604a46ff34d6a13aca9c5)
+- chore: Add Docker stack for Changelog generation. [`e8a662b`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/e8a662b922c51a4457bb4c687b10211f81c74f3e)
 - refactor: Update code style based on drupol/php-conventions. [`7f71738`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/7f71738065dba8be393b2eab2c420e028d4c3c01)
 - refactor: Upgrade to drupol/php-conventions version 4. [`84f9e23`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/84f9e23ad76002493be6c1a258cf3bbeb02455e0)
 - refactor: Return the user in UserProvider::refreshUser(). [`4430bc7`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/4430bc743d1f0e60cc2a263b91e4bcb9477dff27)
