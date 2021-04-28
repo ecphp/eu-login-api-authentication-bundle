@@ -23,24 +23,24 @@
         "web-token/jwt-signature-algorithm-hmac": "^2.2"
     },
     "require-dev": {
+        "behat/behat": "^3.8",
         "drupol/php-conventions": "^4.0.3",
+        "friends-of-behat/mink": "^1.9",
+        "friends-of-behat/mink-browserkit-driver": "^1.5",
+        "friends-of-behat/mink-extension": "^2.5",
+        "friends-of-behat/symfony-extension": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^6.0",
         "infection/infection": "^0.21.0",
         "infection/phpspec-adapter": "^0.1.2",
         "nyholm/psr7": "^1",
         "phpspec/phpspec": "^7.0",
+        "sensio/framework-extra-bundle": "^6.1",
+        "soyuka/contexts": "^3.3",
         "symfony/http-client": "^5.2",
+        "symfony/monolog-bundle": "^3.7",
         "symfony/security-bundle": "^5.2",
         "symfony/var-dumper": "^5.2",
-        "vimeo/psalm": "^4.4",
-        "behat/behat": "^3.8",
-        "friends-of-behat/symfony-extension": "^2.2",
-        "friends-of-behat/mink-browserkit-driver": "^1.5",
-        "friends-of-behat/mink": "^1.9",
-        "friends-of-behat/mink-extension": "^2.5",
-        "soyuka/contexts": "^3.3",
-        "sensio/framework-extra-bundle": "^6.1",
-        "symfony/monolog-bundle": "^3.7"
+        "vimeo/psalm": "^4.4"
     },
     "autoload": {
         "psr-4": {
