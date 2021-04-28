@@ -11,6 +11,7 @@
     "require": {
         "php": ">= 7.4",
         "ext-json": "*",
+        "ajgarlag/psr-http-message-bundle": "^1.1",
         "facile-it/php-jose-verifier": "^0.3",
         "facile-it/php-openid-client": "dev-master#d56cbc684495b8aa1f59f698a442333a2eed7a38",
         "firebase/php-jwt": "^5.2",
@@ -18,7 +19,6 @@
         "psr/http-message": "^1.0",
         "symfony/dependency-injection": "^5.2",
         "symfony/framework-bundle": "^5.2",
-        "symfony/psr-http-message-bridge": "^2.1",
         "web-token/jwt-signature-algorithm-ecdsa": "^2.2",
         "web-token/jwt-signature-algorithm-hmac": "^2.2"
     },
@@ -32,7 +32,15 @@
         "symfony/http-client": "^5.2",
         "symfony/security-bundle": "^5.2",
         "symfony/var-dumper": "^5.2",
-        "vimeo/psalm": "^4.4"
+        "vimeo/psalm": "^4.4",
+        "behat/behat": "^3.8",
+        "friends-of-behat/symfony-extension": "^2.2",
+        "friends-of-behat/mink-browserkit-driver": "^1.5",
+        "friends-of-behat/mink": "^1.9",
+        "friends-of-behat/mink-extension": "^2.5",
+        "soyuka/contexts": "^3.3",
+        "sensio/framework-extra-bundle": "^6.1",
+        "symfony/monolog-bundle": "^3.7"
     },
     "autoload": {
         "psr-4": {

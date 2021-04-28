@@ -1,0 +1,2 @@
+controllers:
+    resource: '@EuLoginApiAuthenticationBundle/Resources/config/routes/routes.php'

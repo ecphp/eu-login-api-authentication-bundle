@@ -1,0 +1,4 @@
+services:
+    EcPhp\EuLoginApiAuthenticationBundle\Service\LocalEuLoginApiCredentials:
+        decorates: 'eu_login_api_authentication.service'
+        arguments: ['@.inner']
