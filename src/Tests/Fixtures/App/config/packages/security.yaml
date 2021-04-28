@@ -1,0 +1,16 @@
+security:
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: true
+            provider: eu_login_api_authentication
+            pattern: ^/
+            guard:
+                authenticators:
+                    - eu_login_api_authentication.guard
+
+    access_control:
+        - { path: ^/token, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/user, role: IS_AUTHENTICATED_FULLY }
