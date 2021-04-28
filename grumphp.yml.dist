@@ -17,3 +17,4 @@ parameters:
       configuration: infection.json.dist
       min_msi: 5
       min_covered_msi: 5
+    behat: ~
