@@ -10,22 +10,34 @@
     "license": "BSD-3-Clause",
     "require": {
         "php": ">= 7.4",
+        "ext-json": "*",
+        "ajgarlag/psr-http-message-bundle": "^1.1",
         "facile-it/php-jose-verifier": "^0.3",
         "facile-it/php-openid-client": "dev-master#d56cbc684495b8aa1f59f698a442333a2eed7a38",
+        "firebase/php-jwt": "^5.2",
+        "psr/http-client": "^1.0",
+        "psr/http-message": "^1.0",
         "symfony/dependency-injection": "^5.2",
         "symfony/framework-bundle": "^5.2",
-        "symfony/psr-http-message-bridge": "^2.1",
         "web-token/jwt-signature-algorithm-ecdsa": "^2.2",
         "web-token/jwt-signature-algorithm-hmac": "^2.2"
     },
     "require-dev": {
+        "behat/behat": "^3.8",
         "drupol/php-conventions": "^4.0.3",
+        "friends-of-behat/mink": "^1.9",
+        "friends-of-behat/mink-browserkit-driver": "^1.5",
+        "friends-of-behat/mink-extension": "^2.5",
+        "friends-of-behat/symfony-extension": "^2.2",
         "friends-of-phpspec/phpspec-code-coverage": "^6.0",
         "infection/infection": "^0.21.0",
         "infection/phpspec-adapter": "^0.1.2",
         "nyholm/psr7": "^1",
         "phpspec/phpspec": "^7.0",
+        "sensio/framework-extra-bundle": "^6.1",
+        "soyuka/contexts": "^3.3",
         "symfony/http-client": "^5.2",
+        "symfony/monolog-bundle": "^3.7",
         "symfony/security-bundle": "^5.2",
         "symfony/var-dumper": "^5.2",
         "vimeo/psalm": "^4.4"
@@ -44,8 +56,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "grumphp": "./vendor/bin/grumphp run",
         "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
-        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v"
+        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
+        "grumphp": "./vendor/bin/grumphp run"
     }
 }

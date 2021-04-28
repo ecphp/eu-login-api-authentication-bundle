@@ -11,9 +11,4 @@ parameters:
     clover_coverage:
       clover_file: build/logs/clover.xml
       level: 5
-    infection:
-      threads: 2
-      test_framework: phpspec
-      configuration: infection.json.dist
-      min_msi: 5
-      min_covered_msi: 5
+    behat: ~
