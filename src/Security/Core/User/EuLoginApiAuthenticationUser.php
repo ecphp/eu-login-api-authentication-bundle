@@ -34,64 +34,40 @@ final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUser
         return new self($username, $payload);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function eraseCredentials(): void
     {
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function get(string $key, $default = null)
     {
         return $this->getStorage()[$key] ?? $default;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAttribute(string $key, $default = null)
     {
         return $this->getStorage()[$key] ?? $default;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getAttributes(): array
     {
         return $this->getStorage();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getPassword(): ?string
     {
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getRoles(): array
     {
         return ['IS_AUTHENTICATED_FULLY'];
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getSalt(): ?string
     {
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUsername(): string
     {
         return $this->sub;

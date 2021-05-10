@@ -36,17 +36,11 @@ final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuth
         $this->euLoginApiCredentials = $euLoginApiCredentials;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function checkCredentials($credentials, UserInterface $user): bool
     {
         return true;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getCredentials(Request $request): array
     {
         try {
@@ -58,50 +52,32 @@ final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuth
         return $credentials;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface
     {
         /** @var EuLoginApiAuthenticationUserProviderInterface $userProvider */
         return $userProvider->loadUserByUsernameAndPayload($credentials['sub'], $credentials);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         return new Response('Authentication failed', 401);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Response
     {
         return null;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function start(Request $request, ?AuthenticationException $authException = null): Response
     {
         return new Response('Authentication failed', 401);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supports(Request $request): bool
     {
         return $this->euLoginApiCredentials->hasPopToken($this->toPsr($request));
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function supportsRememberMe(): bool
     {
         return false;
