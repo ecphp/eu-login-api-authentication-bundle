@@ -19,7 +19,7 @@ use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 return static function (ContainerConfigurator $container) {
     $container
         ->services()
-        ->set(PsrHttpFactory::class) 
+        ->set(PsrHttpFactory::class)
         ->autowire(true)
         ->autoconfigure(true);
 
