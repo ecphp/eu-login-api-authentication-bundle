@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 namespace EcPhp\EuLoginApiAuthenticationBundle\Tests\Fixtures\App;
 
-use Ajgarlag\Bundle\PsrHttpMessageBundle\AjgarlagPsrHttpMessageBundle;
 use EcPhp\EuLoginApiAuthenticationBundle\EuLoginApiAuthenticationBundle;
 use FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
@@ -28,7 +27,6 @@ final class Kernel extends BaseKernel
     {
         return [
             new MonologBundle(),
-            new AjgarlagPsrHttpMessageBundle(),
             new SecurityBundle(),
             new FriendsOfBehatSymfonyExtensionBundle(),
             new EuLoginApiAuthenticationBundle(),
