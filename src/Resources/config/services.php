@@ -13,8 +13,20 @@ use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthentica
 use EcPhp\EuLoginApiAuthenticationBundle\Security\EuLoginApiAuthenticationGuardAuthenticator;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentials;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentialsInterface;
+use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
+use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 
 return static function (ContainerConfigurator $container) {
+    $container
+        ->services()
+        ->set(PsrHttpFactory::class) 
+        ->autowire(true)
+        ->autoconfigure(true);
+
+    $container
+        ->services()
+        ->alias(HttpMessageFactoryInterface::class, PsrHttpFactory::class);
+
     $container
         ->services()
         ->set('eu_login_api_authentication.guard', EuLoginApiAuthenticationGuardAuthenticator::class)
