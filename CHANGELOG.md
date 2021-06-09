@@ -5,7 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/0.0.1...1.0.0)
+## [1.0.1](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/1.0.0...1.0.1)
+
+### Merged
+
+- chore(deps): Bump actions/cache from 2.1.5 to 2.1.6 [`#7`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/7)
+- chore(deps-dev): Update infection/infection requirement from ^0.22.0 to ^0.23.0 [`#5`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/5)
+
+### Commits
+
+- ci: Disable tests on Darwin platform. [`b83aa47`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/b83aa477bebe7e4293246e19c8a3dca54af092a4)
+- chore: Update composer.json. [`16d29d2`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/16d29d2db65568c5a9e3ed8c9d3c3f23f79dcf8a)
+- refactor: Update code style. [`f81ecf4`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/f81ecf4a6e4368064d7df5d81ad685a42184197b)
+- Autofix code style. [`758ccf2`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/758ccf2eaa6d34896ac8587afa9aa5bca1b9679a)
+- test: Fix tests. [`9b41bf4`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/9b41bf48aa3909b5c51e45e3b32101de93085ab7)
+- refactor: Update services, add missing wirings. [`4fdbb41`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/4fdbb415ad1e67cffbcff66a785482f576d99f6b)
+- chore: Remove ajgarlag/psr-http-message-bundle. [`c90f7d7`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/c90f7d75db5370599847d262d220894ec575e62e)
+- chore(deps-dev): Update infection/infection requirement [`c1f471a`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/c1f471af3c6e92efd934287916fbf3a6aae9cae5)
+- refactor: Autofix code style. [`c8b434d`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/c8b434dcdcde6756df5b0b73218e77d322e8f954)
+- chore: Switch to ecphp/php-conventions. [`1bbdc21`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/1bbdc216affa8177bd86ee40e06a72f7b89abd2e)
+- docs: Update links. [`2d8f82f`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/2d8f82f2740c8afd60352544df9e94ec31d5c172)
+
+## [1.0.0](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/0.0.1...1.0.0) - 2021-04-28
 
 ### Merged
 
@@ -14,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Commits
 
+- docs: Update changelog. [`7b6caef`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/7b6caefa14dbe7085de5714fb1465647d782d70c)
 - ci: Enable automatic release changelog generation. [`17edfed`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/17edfedc7e47e47ba95e7d2da52933d2fb4cc092)
 - docs: Update changelog. [`a1908d8`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/a1908d8bdfadb113921300c28a58524ffb27328e)
 - docs: Update README and documentation accordingly. [`4273dd8`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/4273dd8f1c2dcf8efcde0ca77f0826d6a8f9e862)
