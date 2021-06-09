@@ -12,7 +12,7 @@
         "php": ">= 7.4",
         "ext-json": "*",
         "facile-it/php-jose-verifier": "^0.3",
-        "facile-it/php-openid-client": "dev-master#d56cbc684495b8aa1f59f698a442333a2eed7a38",
+        "facile-it/php-openid-client": "^0.2",
         "firebase/php-jwt": "^5.2",
         "psr/http-client": "^1.0",
         "psr/http-client-implementation": "^1.0",
@@ -53,8 +53,6 @@
             "tests\\EcPhp\\EuLoginApiAuthenticationBundle\\": "./tests/src"
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "scripts": {
         "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
         "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
