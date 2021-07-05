@@ -5,7 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.1](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/1.0.0...1.0.1)
+## [1.0.2](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/1.0.1...1.0.2)
+
+### Commits
+
+- chore: Update .gitattributes. [`048b625`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/048b6250b8375db42facff411bdf334b25f9c4f6)
+
+## [1.0.1](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/1.0.0...1.0.1) - 2021-06-09
 
 ### Merged
 
@@ -14,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Commits
 
+- doc: Update Changelog. [`7c6aaf5`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/7c6aaf5e81f839692b0f153fdf595fe1a653580a)
 - ci: Disable tests on Darwin platform. [`b83aa47`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/b83aa477bebe7e4293246e19c8a3dca54af092a4)
 - chore: Update composer.json. [`16d29d2`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/16d29d2db65568c5a9e3ed8c9d3c3f23f79dcf8a)
 - refactor: Update code style. [`f81ecf4`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/f81ecf4a6e4368064d7df5d81ad685a42184197b)
