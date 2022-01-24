@@ -3,7 +3,6 @@ imports:
 
 parameters:
   tasks.license.date_from: 2020
-  tasks.license.holder: ECPHP
   extra_tasks:
     phpspec:
       verbose: true
