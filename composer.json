@@ -1,13 +1,13 @@
 {
     "name": "ecphp/eu-login-api-authentication-bundle",
-    "type": "symfony-bundle",
     "description": "EU Login API Authentication Bundle, authenticate requests from European Commission corporate service 'EU Login' using OpenID Connect protocol.",
+    "license": "BSD-3-Clause",
+    "type": "symfony-bundle",
     "keywords": [
         "authentication",
         "jwt",
         "EU Login"
     ],
-    "license": "BSD-3-Clause",
     "require": {
         "php": ">= 7.4",
         "ext-json": "*",
@@ -51,6 +51,15 @@
         "psr-4": {
             "spec\\EcPhp\\EuLoginApiAuthenticationBundle\\": "./spec/EcPhp/EuLoginApiAuthenticationBundle/",
             "tests\\EcPhp\\EuLoginApiAuthenticationBundle\\": "./tests/src"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "ergebnis/composer-normalize": true,
+            "infection/extension-installer": true,
+            "phpro/grumphp": true,
+            "phpstan/extension-installer": true
         }
     },
     "scripts": {
