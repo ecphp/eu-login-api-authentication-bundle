@@ -28,11 +28,11 @@ class Configuration implements ConfigurationInterface
             ->children()
             ->scalarNode('client_id')->isRequired()->end()
             ->scalarNode('client_secret')->isRequired()->end()
-            ->enumNode('environment')
-            ->values(['production', 'acceptance'])
-            ->defaultValue('production')
-            ->isRequired()
+            ->scalarNode('environment')
             ->cannotBeEmpty()
+            ->isRequired()
+            ->defaultValue('production')
+            ->end()
             ->end();
 
         return $treeBuilder;
