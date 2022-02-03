@@ -47,26 +47,22 @@ Edit the security settings of your application by edition the file `config/packa
 .. code-block:: yaml
 
     security:
+        enable_authenticator_manager: true
         firewalls:
             dev:
                 pattern: ^/(_(profiler|wdt)|css|images|js)/
                 security: false
             main:
-                anonymous: true
-                stateless: true
-                provider: eu_login_api_authentication
-                guard:
-                    authenticators:
-                        - eu_login_api_authentication.guard
+                custom_authenticators:
+                    - 'eu_login_api_authentication.authenticator'
 
         access_control:
-            - { path: ^/token, role: IS_AUTHENTICATED_ANONYMOUSLY }
             - { path: ^/user, role: IS_AUTHENTICATED_FULLY }
 
 Feel free to change these configuration to fits your need. Have a look at
-`the Symfony documentation about security and Guard authentication`_.
+`the Symfony documentation about security and authentication`_.
 
 .. _a Symfony Flex recipe: https://github.com/symfony/recipes-contrib/blob/master/ecphp/eu-login-api-authentication-bundle/1.0/manifest.json
 .. _Composer: https://getcomposer.org
-.. _the Symfony documentation about security and Guard authentication: https://symfony.com/doc/current/security/guard_authentication.html
+.. _the Symfony documentation about security and authentication: https://symfony.com/doc/current/security/guard_authentication.html
 .. _Symfony recipe: https://github.com/symfony/recipes-contrib/tree/master/ecphp/eu-login-api-authentication-bundle/1.0
