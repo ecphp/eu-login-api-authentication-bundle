@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace EcPhp\EuLoginApiAuthenticationBundle\Security;
 
-use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUserProviderInterface;
+use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUser;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentialsInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
@@ -20,11 +20,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
-use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
+use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
+use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
+use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 use Throwable;
 
-final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuthenticator
+final class EuLoginApiAuthenticationAuthenticator extends AbstractAuthenticator
 {
     private EuLoginApiCredentialsInterface $euLoginApiCredentials;
 
@@ -38,26 +40,20 @@ final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuth
         $this->euLoginApiCredentials = $euLoginApiCredentials;
     }
 
-    public function checkCredentials($credentials, UserInterface $user): bool
-    {
-        return true;
-    }
-
-    public function getCredentials(Request $request): array
+    public function authenticate(Request $request): Passport
     {
         try {
-            $credentials = $this->euLoginApiCredentials->getCredentials($this->toPsr($request));
+            $payload = $this->euLoginApiCredentials->getCredentials($this->toPsr($request));
         } catch (Throwable $e) {
             throw new AuthenticationException('Unable to get credentials.', 0, $e);
         }
 
-        return $credentials;
-    }
-
-    public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface
-    {
-        /** @var EuLoginApiAuthenticationUserProviderInterface $userProvider */
-        return $userProvider->loadUserByUsernameAndPayload($credentials['sub'], $credentials);
+        return new SelfValidatingPassport(
+            new UserBadge(
+                $payload['sub'],
+                static fn (string $identifier): UserInterface => new EuLoginApiAuthenticationUser($identifier, $payload)
+            )
+        );
     }
 
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
@@ -65,24 +61,14 @@ final class EuLoginApiAuthenticationGuardAuthenticator extends AbstractGuardAuth
         return new Response('Authentication failed', 401);
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Response
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         return null;
-    }
-
-    public function start(Request $request, ?AuthenticationException $authException = null): Response
-    {
-        return new Response('Authentication failed', 401);
     }
 
     public function supports(Request $request): bool
     {
         return $this->euLoginApiCredentials->hasPopToken($this->toPsr($request));
-    }
-
-    public function supportsRememberMe(): bool
-    {
-        return false;
     }
 
     /**
