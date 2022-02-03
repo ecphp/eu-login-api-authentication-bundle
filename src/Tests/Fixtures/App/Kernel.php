@@ -25,7 +25,7 @@ final class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
-    public function registerBundles()
+    public function registerBundles(): iterable
     {
         return [
             new MonologBundle(),
