@@ -13,7 +13,7 @@
         "ext-json": "*",
         "facile-it/php-jose-verifier": "^0.3",
         "facile-it/php-openid-client": "^0.2",
-        "firebase/php-jwt": "^5.2",
+        "firebase/php-jwt": "^6.1",
         "psr/http-client": "^1.0",
         "psr/http-client-implementation": "^1.0",
         "psr/http-message": "^1.0",
