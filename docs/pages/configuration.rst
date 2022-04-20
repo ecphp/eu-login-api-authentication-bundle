@@ -29,15 +29,16 @@ In order to do that, follow the following steps:
 
 .. code-block:: yaml
 
-    services:
-        EcPhp\EuLoginApiAuthenticationBundle\Service\LocalEuLoginApiCredentials:
-            decorates: 'eu_login_api_authentication.service'
-            arguments: ['@.inner']
+    when@dev:
+        services:
+            EcPhp\EuLoginApiAuthenticationBundle\Service\LocalEuLoginApiCredentials:
+                decorates: 'eu_login_api_authentication.service'
+                arguments: ['@.inner']
 
 2. This will replace the `EU Login`_ authentication mechanism by another one
    which does not require any connection to `EU Login`_.
 
-   .. warning:: Be extremely careful, do not enable that in production.
+   .. warning:: Be extremely careful to not enable that for production environment.
 
 3. Read the `official Symfony documentation`_ if you want to enable this only
    for a particular `environment`_.

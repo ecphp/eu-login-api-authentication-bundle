@@ -13,27 +13,25 @@ namespace EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User;
 
 final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUserInterface
 {
+    private string $identifier;
+
     /**
-     * The user storage.
-     *
      * @var array<mixed>
      */
-    private array $storage;
-
-    private string $sub;
+    private array $payload;
 
     /**
-     * @param array<mixed> $data
+     * @param array<mixed> $payload
      */
-    public function __construct(string $username, array $data = [])
+    public function __construct(string $identifier, array $payload = [])
     {
-        $this->storage = $data;
-        $this->sub = $username;
+        $this->payload = $payload;
+        $this->identifier = $identifier;
     }
 
-    public static function createFromPayload($username, array $payload)
+    public static function createFromPayload($identifier, array $payload)
     {
-        return new self($username, $payload);
+        return new self($identifier, $payload);
     }
 
     public function eraseCredentials(): void
@@ -70,9 +68,14 @@ final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUser
         return null;
     }
 
+    public function getUserIdentifier(): string
+    {
+        return $this->identifier;
+    }
+
     public function getUsername(): string
     {
-        return $this->sub;
+        return $this->identifier;
     }
 
     /**
@@ -82,6 +85,6 @@ final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUser
      */
     private function getStorage(): array
     {
-        return $this->storage;
+        return $this->payload;
     }
 }

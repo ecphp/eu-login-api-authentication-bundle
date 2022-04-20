@@ -1,7 +1,7 @@
 EU Login API Authentication Bundle
 ==================================
 
-This Symfony 5 bundle provides the necessary to authenticate a request having a
+This Symfony bundle provides the necessary to authenticate a request having a
 specific ``Authorization`` HTTP header with a ``pop`` token.
 
 Supported tokens are:

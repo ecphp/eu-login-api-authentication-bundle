@@ -10,7 +10,7 @@
 
 # EU Login API Authentication Bundle
 
-A bundle for Symfony 5.
+A bundle for Symfony.
 
 Read more on the [dedicated documentation site][http readthedocs].
 

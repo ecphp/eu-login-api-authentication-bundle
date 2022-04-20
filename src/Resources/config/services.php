@@ -11,50 +11,38 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
-use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUserProvider;
-use EcPhp\EuLoginApiAuthenticationBundle\Security\EuLoginApiAuthenticationGuardAuthenticator;
+use EcPhp\EuLoginApiAuthenticationBundle\Security\EuLoginApiAuthenticationAuthenticator;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentials;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentialsInterface;
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 
 return static function (ContainerConfigurator $container) {
-    $container
-        ->services()
-        ->set(PsrHttpFactory::class)
-        ->autowire(true)
-        ->autoconfigure(true);
+    $services = $container
+        ->services();
 
-    $container
-        ->services()
+    $services
+        ->defaults()
+        ->autoconfigure(true)
+        ->autowire(true);
+
+    $services
+        ->set(PsrHttpFactory::class);
+
+    $services
         ->alias(HttpMessageFactoryInterface::class, PsrHttpFactory::class);
 
-    $container
-        ->services()
-        ->set('eu_login_api_authentication.guard', EuLoginApiAuthenticationGuardAuthenticator::class)
-        ->autowire(true)
-        ->autoconfigure(true);
+    $services
+        ->set('eu_login_api_authentication.authenticator', EuLoginApiAuthenticationAuthenticator::class);
 
-    $container
-        ->services()
+    $services
         ->set('eu_login_api_authentication.service', EuLoginApiCredentials::class)
-        ->arg('$configuration', '%eu_login_api_authentication%')
-        ->autowire(true)
-        ->autoconfigure(true);
+        ->arg('$configuration', '%eu_login_api_authentication%');
 
-    $container
-        ->services()
-        ->set('eu_login_api_authentication.user_provider', EuLoginApiAuthenticationUserProvider::class)
-        ->autowire(true)
-        ->autoconfigure(true);
-
-    $container
-        ->services()
+    $services
         ->alias(EuLoginApiCredentialsInterface::class, 'eu_login_api_authentication.service');
 
-    $container
-        ->services()->load('EcPhp\\EuLoginApiAuthenticationBundle\\Controller\\', __DIR__ . '/../../Controller')
-        ->autowire(true)
-        ->autoconfigure(true)
+    $services
+        ->load('EcPhp\\EuLoginApiAuthenticationBundle\\Controller\\', __DIR__ . '/../../Controller')
         ->tag('controller.service_arguments');
 };

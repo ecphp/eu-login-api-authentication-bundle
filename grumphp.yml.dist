@@ -4,9 +4,4 @@ imports:
 parameters:
   tasks.license.date_from: 2020
   extra_tasks:
-    phpspec:
-      verbose: true
-    clover_coverage:
-      clover_file: build/logs/clover.xml
-      level: 5
     behat: ~

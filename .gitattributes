@@ -18,8 +18,6 @@
 /grumphp.yml.dist export-ignore
 /infection.json export-ignore
 /infection.json.dist export-ignore
-/phpspec.yml export-ignore
-/phpspec.yml.dist export-ignore
 /phpstan.neon export-ignore
 /phpstan.neon.dist export-ignore
 /psalm.xml export-ignore
