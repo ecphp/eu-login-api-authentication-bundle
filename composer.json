@@ -11,7 +11,7 @@
     "require": {
         "php": ">= 7.4",
         "ext-json": "*",
-        "facile-it/php-jose-verifier": "^0.3",
+        "facile-it/php-jose-verifier": "^0.4",
         "facile-it/php-openid-client": "^0.3",
         "firebase/php-jwt": "^6.1",
         "psr/http-client": "^1.0",
