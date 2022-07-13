@@ -23,7 +23,6 @@ final class Configuration implements ConfigurationInterface
         /** @var \Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition $rootNode */
         $rootNode = $treeBuilder->getRootNode();
 
-        /** @phpstan-ignore-next-line */
         $rootNode
             ->children()
             ->scalarNode('client_id')->isRequired()->end()
