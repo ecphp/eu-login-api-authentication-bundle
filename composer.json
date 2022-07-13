@@ -58,8 +58,9 @@
         }
     },
     "scripts": {
-        "changelog-unreleased": "docker-compose run auto_changelog -c .auto-changelog -u",
-        "changelog-version": "docker-compose run auto_changelog -c .auto-changelog -v",
-        "grumphp": "./vendor/bin/grumphp run"
+        "changelog-unreleased": "auto-changelog -c .auto-changelog -u",
+        "changelog-version": "auto-changelog -c .auto-changelog -v",
+        "grumphp": "./vendor/bin/grumphp run",
+        "phpspec": "./vendor/bin/phpspec run"
     }
 }
