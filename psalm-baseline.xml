@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
+  <file src="src/DependencyInjection/Configuration.php">
+    <ReservedWord occurrences="1"/>
+  </file>
+  <file src="src/DependencyInjection/EuLoginApiAuthenticationExtension.php">
+    <ReservedWord occurrences="1">
+      <code>$loader-&gt;load('services.php')</code>
+    </ReservedWord>
+  </file>
+  <file src="src/Service/EuLoginApiCredentials.php">
+    <UndefinedMethod occurrences="1">
+      <code>build</code>
+    </UndefinedMethod>
+  </file>
+</files>
