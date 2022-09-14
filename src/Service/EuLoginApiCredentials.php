@@ -146,7 +146,7 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
     private function getAccessToken(string $popToken): string
     {
         try {
-            [, $payload,] = array_map(
+            [, $payload] = array_map(
                 'json_decode',
                 array_map(
                     'base64_decode',

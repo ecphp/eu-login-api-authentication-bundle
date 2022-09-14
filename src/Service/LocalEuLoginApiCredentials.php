@@ -51,7 +51,7 @@ final class LocalEuLoginApiCredentials implements EuLoginApiCredentialsInterface
         }
 
         // Step 2.
-        [, $payload,] = array_map(
+        [, $payload] = array_map(
             'json_decode',
             array_map(
                 'base64_decode',
@@ -90,7 +90,7 @@ final class LocalEuLoginApiCredentials implements EuLoginApiCredentialsInterface
     private function getAccessToken(string $popToken): string
     {
         try {
-            [, $payload,] = array_map(
+            [, $payload] = array_map(
                 'json_decode',
                 array_map(
                     'base64_decode',
