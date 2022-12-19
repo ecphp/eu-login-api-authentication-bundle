@@ -33,7 +33,7 @@
         "friends-of-behat/symfony-extension": "^2.2",
         "nyholm/psr7": "^1",
         "phpstan/phpstan-symfony": "^1.2",
-        "psalm/plugin-symfony": "^4.0",
+        "psalm/plugin-symfony": "^5.0",
         "soyuka/contexts": "^3.3",
         "symfony/config": "^5.4 || ^6",
         "symfony/http-client": "^5.4 || ^6",
