@@ -1,4 +1,7 @@
 services:
+    Psr\Http\Client\ClientInterface:
+        class: Symfony\Component\HttpClient\Psr18Client
+
     EcPhp\EuLoginApiAuthenticationBundle\Service\LocalEuLoginApiCredentials:
         decorates: "eu_login_api_authentication.service"
         arguments: ["@.inner"]

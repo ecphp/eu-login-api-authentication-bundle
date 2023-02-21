@@ -36,7 +36,7 @@
         "psalm/plugin-symfony": "^5.0",
         "soyuka/contexts": "^3.3",
         "symfony/config": "^5.4 || ^6",
-        "symfony/http-client": "^5.4 || ^6",
+        "symfony/http-client": "^6.2",
         "symfony/monolog-bundle": "^3.7",
         "symfony/security-bundle": "^5.4 || ^6"
     },
