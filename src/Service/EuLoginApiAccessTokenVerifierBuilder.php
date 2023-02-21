@@ -14,6 +14,9 @@ namespace EcPhp\EuLoginApiAuthenticationBundle\Service;
 use Facile\JoseVerifier\AbstractTokenVerifier;
 use Facile\JoseVerifier\AbstractTokenVerifierBuilder;
 
+/**
+ * @extends AbstractTokenVerifierBuilder<EuLoginApiAccessTokenVerifier>
+ */
 final class EuLoginApiAccessTokenVerifierBuilder extends AbstractTokenVerifierBuilder
 {
     protected function getExpectedAlg(): ?string
