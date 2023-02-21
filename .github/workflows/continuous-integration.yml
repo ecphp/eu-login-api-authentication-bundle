@@ -50,6 +50,8 @@ jobs:
 
             - name: Run Grumphp
               run: vendor/bin/grumphp run
+              env:
+                  PHP_CS_FIXER_IGNORE_ENV: 1
 
             - name: Send Scrutinizer data
               run: |
