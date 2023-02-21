@@ -27,7 +27,9 @@ jobs:
             fail-fast: false
             matrix:
                 operating-system: [ubuntu-latest, windows-latest, macOS-latest]
-                php: ${{ fromJson(needs.supported-versions-matrix.outputs.version) }}
+                php:
+                    ${{
+                    fromJson(needs.supported-versions-matrix.outputs.version) }}
         steps:
             - name: Set git to use LF
               run: |

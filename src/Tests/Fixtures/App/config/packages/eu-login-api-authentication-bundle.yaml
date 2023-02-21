@@ -1,4 +1,4 @@
 eu_login_api_authentication:
-  client_id: foo
-  client_secret: bar
-  environment: acceptance
+    client_id: foo
+    client_secret: bar
+    environment: acceptance
