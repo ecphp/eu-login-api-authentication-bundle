@@ -57,7 +57,8 @@
             "ergebnis/composer-normalize": true,
             "infection/extension-installer": true,
             "phpro/grumphp": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "php-http/discovery": true
         }
     },
     "scripts": {
