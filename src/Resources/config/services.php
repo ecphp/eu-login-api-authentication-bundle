@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
+use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUserProvider;
+use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUserProviderInterface;
 use EcPhp\EuLoginApiAuthenticationBundle\Security\EuLoginApiAuthenticationAuthenticator;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentials;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentialsInterface;
@@ -31,6 +33,12 @@ return static function (ContainerConfigurator $container) {
 
     $services
         ->alias(HttpMessageFactoryInterface::class, PsrHttpFactory::class);
+
+    $services
+        ->set(EuLoginApiAuthenticationUserProvider::class);
+
+    $services
+        ->alias(EuLoginApiAuthenticationUserProviderInterface::class, EuLoginApiAuthenticationUserProvider::class);
 
     $services
         ->set('eu_login_api_authentication.authenticator', EuLoginApiAuthenticationAuthenticator::class);

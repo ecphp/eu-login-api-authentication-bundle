@@ -11,7 +11,7 @@ declare(strict_types=1);
 
 namespace EcPhp\EuLoginApiAuthenticationBundle\Security;
 
-use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUser;
+use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUserProviderInterface;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentialsInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
@@ -28,16 +28,20 @@ use Throwable;
 
 final class EuLoginApiAuthenticationAuthenticator extends AbstractAuthenticator
 {
+    private EuLoginApiAuthenticationUserProviderInterface $euLoginApiAuthenticationUserProvider;
+
     private EuLoginApiCredentialsInterface $euLoginApiCredentials;
 
     private HttpMessageFactoryInterface $httpMessageFactory;
 
     public function __construct(
         HttpMessageFactoryInterface $httpMessageFactory,
-        EuLoginApiCredentialsInterface $euLoginApiCredentials
+        EuLoginApiCredentialsInterface $euLoginApiCredentials,
+        EuLoginApiAuthenticationUserProviderInterface $euLoginApiAuthenticationUserProvider
     ) {
         $this->httpMessageFactory = $httpMessageFactory;
         $this->euLoginApiCredentials = $euLoginApiCredentials;
+        $this->euLoginApiAuthenticationUserProvider = $euLoginApiAuthenticationUserProvider;
     }
 
     public function authenticate(Request $request): Passport
@@ -51,7 +55,7 @@ final class EuLoginApiAuthenticationAuthenticator extends AbstractAuthenticator
         return new SelfValidatingPassport(
             new UserBadge(
                 $payload['sub'],
-                static fn (string $identifier): UserInterface => new EuLoginApiAuthenticationUser($identifier, $payload)
+                static fn (string $identifier): UserInterface => $this->euLoginApiAuthenticationUserProvider->loadUserByUsernameAndPayload($identifier, $payload)
             )
         );
     }
