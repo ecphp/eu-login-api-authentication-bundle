@@ -55,7 +55,7 @@ final class EuLoginApiAuthenticationAuthenticator extends AbstractAuthenticator
         return new SelfValidatingPassport(
             new UserBadge(
                 $payload['sub'],
-                static fn (string $identifier): UserInterface => $this->euLoginApiAuthenticationUserProvider->loadUserByUsernameAndPayload($identifier, $payload)
+                fn (string $identifier): UserInterface => $this->euLoginApiAuthenticationUserProvider->loadUserByUsernameAndPayload($identifier, $payload)
             )
         );
     }
