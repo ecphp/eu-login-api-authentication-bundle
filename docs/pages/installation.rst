@@ -48,13 +48,18 @@ Edit the security settings of your application by edition the file `config/packa
 
     security:
         enable_authenticator_manager: true
+        # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+        providers:
+            eu_login_api_authentication:
+                id: EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUserProvider
         firewalls:
             dev:
                 pattern: ^/(_(profiler|wdt)|css|images|js)/
                 security: false
             main:
+                provider: eu_login_api_authentication
                 custom_authenticators:
-                    - 'eu_login_api_authentication.authenticator'
+                    - EcPhp\EuLoginApiAuthenticationBundle\Security\EuLoginApiAuthenticationAuthenticator
 
         access_control:
             - { path: ^/user, role: IS_AUTHENTICATED_FULLY }

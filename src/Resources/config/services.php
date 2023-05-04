@@ -41,14 +41,15 @@ return static function (ContainerConfigurator $container) {
         ->alias(EuLoginApiAuthenticationUserProviderInterface::class, EuLoginApiAuthenticationUserProvider::class);
 
     $services
+        ->set(EuLoginApiAuthenticationAuthenticator::class)
         ->set('eu_login_api_authentication.authenticator', EuLoginApiAuthenticationAuthenticator::class);
 
     $services
-        ->set('eu_login_api_authentication.service', EuLoginApiCredentials::class)
+        ->set(EuLoginApiCredentials::class)
         ->arg('$configuration', '%eu_login_api_authentication%');
 
     $services
-        ->alias(EuLoginApiCredentialsInterface::class, 'eu_login_api_authentication.service');
+        ->alias(EuLoginApiCredentialsInterface::class, EuLoginApiCredentials::class);
 
     $services
         ->load('EcPhp\\EuLoginApiAuthenticationBundle\\Controller\\', __DIR__ . '/../../Controller')
