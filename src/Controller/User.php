@@ -12,8 +12,8 @@ declare(strict_types=1);
 namespace EcPhp\EuLoginApiAuthenticationBundle\Controller;
 
 use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUserInterface;
-use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Security\Core\Security;
 
 final class User
 {
