@@ -2,9 +2,7 @@
 [![GitHub stars][github stars]][packagist]
 [![Total Downloads][total downloads]][packagist]
 [![GitHub Workflow Status][github workflow status]][github actions link]
-[![Scrutinizer code quality][code quality]][scrutinizer code quality]
 [![Type Coverage][type coverage]][sheperd type coverage]
-[![Code Coverage][code coverage]][scrutinizer code quality]
 [![Read the Docs][badge readthedocs]][http readthedocs]
 [![License][license]][packagist]
 
@@ -24,16 +22,10 @@ Read more on the [dedicated documentation site][http readthedocs].
     https://img.shields.io/packagist/dt/ecphp/eu-login-api-authentication-bundle.svg?style=flat-square
 [github workflow status]:
     https://img.shields.io/github/actions/workflow/status/ecphp/eu-login-api-authentication-bundle/continuous-integration.yml?branch=master&style=flat-square
-[code quality]:
-    https://img.shields.io/scrutinizer/quality/g/ecphp/eu-login-api-authentication-bundle/master.svg?style=flat-square
-[scrutinizer code quality]:
-    https://scrutinizer-ci.com/g/ecphp/eu-login-api-authentication-bundle/?branch=master
 [type coverage]:
     https://img.shields.io/badge/dynamic/json?style=flat-square&color=color&label=Type%20coverage&query=message&url=https%3A%2F%2Fshepherd.dev%2Fgithub%2Fecphp%2Feu-login-api-authentication-bundle%2Fcoverage
 [sheperd type coverage]:
     https://shepherd.dev/github/ecphp/eu-login-api-authentication-bundle
-[code coverage]:
-    https://img.shields.io/scrutinizer/coverage/g/ecphp/eu-login-api-authentication-bundle/master.svg?style=flat-square
 [license]:
     https://img.shields.io/packagist/l/ecphp/eu-login-api-authentication-bundle.svg?style=flat-square
 [donate github]:
