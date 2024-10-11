@@ -13,6 +13,4 @@ namespace EcPhp\EuLoginApiAuthenticationBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class EuLoginApiAuthenticationBundle extends Bundle
-{
-}
+final class EuLoginApiAuthenticationBundle extends Bundle {}

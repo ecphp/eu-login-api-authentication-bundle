@@ -12,21 +12,22 @@ declare(strict_types=1);
 namespace EcPhp\EuLoginApiAuthenticationBundle\Service;
 
 use Facile\JoseVerifier\AbstractTokenVerifier;
-use Jose\Easy\Validate;
 use Throwable;
 
+// TODO: Can we replace this class with \Facile\JoseVerifier\JWTVerifier ?
 final class EuLoginApiAccessTokenVerifier extends AbstractTokenVerifier
 {
     public function verify(string $jwt): array
     {
         $jwt = $this->decrypt($jwt);
-        /** @var Validate $validator */
         $validator = $this->create($jwt);
 
         try {
-            return $validator->run()->claims->all();
+            $claims = $validator->run();
         } catch (Throwable $e) {
             throw $this->processException($e);
         }
+
+        return $claims;
     }
 }

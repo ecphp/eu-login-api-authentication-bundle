@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace EcPhp\EuLoginApiAuthenticationBundle\Service;
 
 use EcPhp\EuLoginApiAuthenticationBundle\Exception\EuLoginApiAuthenticationException;
+use Facile\JoseVerifier\TokenVerifierInterface;
 use Psr\Http\Message\RequestInterface;
 use Throwable;
 
@@ -133,5 +134,12 @@ final class LocalEuLoginApiCredentials implements EuLoginApiCredentialsInterface
         }
 
         return $headerParts[1];
+    }
+
+    private function getTokenVerifier(array $payload): TokenVerifierInterface
+    {
+        $verifierBuilder = new EuLoginApiAccessTokenVerifierBuilder();
+
+        return $verifierBuilder->build();
     }
 }

@@ -14,6 +14,9 @@ namespace EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 
+/**
+ * @template-extends UserProviderInterface<EuLoginApiAuthenticationUserInterface>
+ */
 interface EuLoginApiAuthenticationUserProviderInterface extends UserProviderInterface
 {
     public function loadUserByUsernameAndPayload(string $username, array $payload): UserInterface;

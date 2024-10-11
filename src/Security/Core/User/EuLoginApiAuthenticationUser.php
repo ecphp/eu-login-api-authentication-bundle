@@ -34,9 +34,7 @@ final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUser
         return new self($identifier, $payload);
     }
 
-    public function eraseCredentials(): void
-    {
-    }
+    public function eraseCredentials(): void {}
 
     public function get(string $key, $default = null)
     {
