@@ -16,6 +16,7 @@ use Psr\Http\Message\RequestInterface;
 use Throwable;
 
 use function count;
+use function sprintf;
 
 final class EuLoginApiAuthenticationException extends Exception
 {

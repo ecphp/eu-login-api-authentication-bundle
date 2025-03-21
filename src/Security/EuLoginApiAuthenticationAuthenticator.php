@@ -78,10 +78,10 @@ final class EuLoginApiAuthenticationAuthenticator extends AbstractAuthenticator
     /**
      * Convert a Symfony request into a PSR Request.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param Request $request
      *   The Symfony request.
      *
-     * @return \Psr\Http\Message\ServerRequestInterface
+     * @return ServerRequestInterface
      *   The PSR request.
      */
     private function toPsr(Request $request): ServerRequestInterface
