@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
+<files psalm-version="6.9.4@e052de4275fb6cdbfedfef1d883a7e90732ea609">
   <file src="src/DependencyInjection/Configuration.php">
-    <ReservedWord occurrences="1"/>
+    <UndefinedInterfaceMethod>
+      <code><![CDATA[scalarNode]]></code>
+    </UndefinedInterfaceMethod>
   </file>
   <file src="src/DependencyInjection/EuLoginApiAuthenticationExtension.php">
-    <ReservedWord occurrences="1">
-      <code>$loader-&gt;load('services.php')</code>
-    </ReservedWord>
+    <UnusedClass>
+      <code><![CDATA[EuLoginApiAuthenticationExtension]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Exception/EuLoginApiAuthenticationException.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[unableToGetPopTokenFromRequest]]></code>
+    </PossiblyUnusedMethod>
+    <UnusedParam>
+      <code><![CDATA[$request]]></code>
+      <code><![CDATA[$request]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Security/Core/User/EuLoginApiAuthenticationUser.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[createFromPayload]]></code>
+      <code><![CDATA[getPassword]]></code>
+      <code><![CDATA[getSalt]]></code>
+      <code><![CDATA[getUsername]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Security/Core/User/EuLoginApiAuthenticationUserInterface.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[get]]></code>
+      <code><![CDATA[getAttribute]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Security/Core/User/EuLoginApiAuthenticationUserProvider.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[loadUserByUsername]]></code>
+    </PossiblyUnusedMethod>
+    <UnusedParam>
+      <code><![CDATA[$username]]></code>
+    </UnusedParam>
+  </file>
+  <file src="src/Security/EuLoginApiAuthenticationAuthenticator.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="src/Service/EuLoginApiAccessTokenVerifier.php">
+    <InternalMethod>
+      <code><![CDATA[run]]></code>
+    </InternalMethod>
   </file>
   <file src="src/Service/EuLoginApiCredentials.php">
-    <UndefinedMethod occurrences="1">
-      <code>build</code>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[__construct]]></code>
+    </PossiblyUnusedMethod>
+    <UndefinedMethod>
+      <code><![CDATA[build]]></code>
     </UndefinedMethod>
+  </file>
+  <file src="src/Service/LocalEuLoginApiCredentials.php">
+    <UnusedClass>
+      <code><![CDATA[LocalEuLoginApiCredentials]]></code>
+    </UnusedClass>
+  </file>
+  <file src="src/Tests/Fixtures/App/Kernel.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[configureContainer]]></code>
+      <code><![CDATA[configureRoutes]]></code>
+    </PossiblyUnusedMethod>
   </file>
 </files>
