@@ -13,6 +13,7 @@ namespace EcPhp\EuLoginApiAuthenticationBundle\Tests\Fixtures\App;
 
 use EcPhp\EuLoginApiAuthenticationBundle\EuLoginApiAuthenticationBundle;
 use FriendsOfBehat\SymfonyExtension\Bundle\FriendsOfBehatSymfonyExtensionBundle;
+use Override;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Bundle\MonologBundle\MonologBundle;
@@ -25,6 +26,7 @@ final class Kernel extends BaseKernel
 {
     use MicroKernelTrait;
 
+    #[Override]
     public function registerBundles(): iterable
     {
         return [

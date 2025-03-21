@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User;
 
+use Override;
+
 final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUserInterface
 {
     private string $identifier;
@@ -34,18 +36,22 @@ final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUser
         return new self($identifier, $payload);
     }
 
+    #[Override]
     public function eraseCredentials(): void {}
 
+    #[Override]
     public function get(string $key, $default = null)
     {
         return $this->getStorage()[$key] ?? $default;
     }
 
+    #[Override]
     public function getAttribute(string $key, $default = null)
     {
         return $this->getStorage()[$key] ?? $default;
     }
 
+    #[Override]
     public function getAttributes(): array
     {
         return $this->getStorage();
@@ -56,6 +62,7 @@ final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUser
         return null;
     }
 
+    #[Override]
     public function getRoles(): array
     {
         return ['IS_AUTHENTICATED_FULLY'];
@@ -66,6 +73,7 @@ final class EuLoginApiAuthenticationUser implements EuLoginApiAuthenticationUser
         return null;
     }
 
+    #[Override]
     public function getUserIdentifier(): string
     {
         return $this->identifier;

@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace EcPhp\EuLoginApiAuthenticationBundle\DependencyInjection;
 
+use Override;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;
@@ -18,6 +19,7 @@ use Symfony\Component\DependencyInjection\Loader\PhpFileLoader;
 
 final class EuLoginApiAuthenticationExtension extends Extension
 {
+    #[Override]
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();

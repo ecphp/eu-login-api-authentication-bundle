@@ -24,8 +24,8 @@ final class Token
                 'token' => JWT::encode(
                     [
                         'at' => JWT::encode(
-                            (array) json_decode($request->getContent(), true) +
-                            ['sub' => uniqid('user_'), 'active' => true],
+                            (array) json_decode($request->getContent(), true)
+                            + ['sub' => uniqid('user_'), 'active' => true],
                             uniqid(),
                             'HS256'
                         ),

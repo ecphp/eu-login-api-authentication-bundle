@@ -13,6 +13,7 @@ namespace EcPhp\EuLoginApiAuthenticationBundle\Security;
 
 use EcPhp\EuLoginApiAuthenticationBundle\Security\Core\User\EuLoginApiAuthenticationUserProviderInterface;
 use EcPhp\EuLoginApiAuthenticationBundle\Service\EuLoginApiCredentialsInterface;
+use Override;
 use Psr\Http\Message\ServerRequestInterface;
 use Symfony\Bridge\PsrHttpMessage\HttpMessageFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -44,6 +45,7 @@ final class EuLoginApiAuthenticationAuthenticator extends AbstractAuthenticator
         $this->euLoginApiAuthenticationUserProvider = $euLoginApiAuthenticationUserProvider;
     }
 
+    #[Override]
     public function authenticate(Request $request): Passport
     {
         try {
@@ -60,16 +62,19 @@ final class EuLoginApiAuthenticationAuthenticator extends AbstractAuthenticator
         );
     }
 
+    #[Override]
     public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         return new Response('Authentication failed', 401);
     }
 
+    #[Override]
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
         return null;
     }
 
+    #[Override]
     public function supports(Request $request): bool
     {
         return $this->euLoginApiCredentials->hasPopToken($this->toPsr($request));

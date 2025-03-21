@@ -24,6 +24,7 @@ use Facile\OpenIDClient\Issuer\IssuerInterface;
 use Facile\OpenIDClient\Issuer\Metadata\Provider\MetadataProviderBuilder;
 use Facile\OpenIDClient\Service\Builder\IntrospectionServiceBuilder;
 use Facile\OpenIDClient\Service\IntrospectionService;
+use Override;
 use Psr\Http\Client\ClientInterface;
 use Psr\Http\Message\RequestInterface;
 use Throwable;
@@ -49,6 +50,7 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
         $this->configuration = $this->updateConfiguration($configuration);
     }
 
+    #[Override]
     public function getCredentials(RequestInterface $request): array
     {
         // 0. Get the pop token from the request.
@@ -132,6 +134,7 @@ final class EuLoginApiCredentials implements EuLoginApiCredentialsInterface
         return $response;
     }
 
+    #[Override]
     public function hasPopToken(RequestInterface $request): bool
     {
         try {

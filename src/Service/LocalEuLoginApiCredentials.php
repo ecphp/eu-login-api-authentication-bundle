@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace EcPhp\EuLoginApiAuthenticationBundle\Service;
 
 use EcPhp\EuLoginApiAuthenticationBundle\Exception\EuLoginApiAuthenticationException;
-use Facile\JoseVerifier\TokenVerifierInterface;
+use Override;
 use Psr\Http\Message\RequestInterface;
 use Throwable;
 
@@ -29,6 +29,7 @@ final class LocalEuLoginApiCredentials implements EuLoginApiCredentialsInterface
         $this->euLoginApiCredentials = $euLoginApiCredentials;
     }
 
+    #[Override]
     public function getCredentials(RequestInterface $request): array
     {
         // 0. Get the pop token from the request.
@@ -83,6 +84,7 @@ final class LocalEuLoginApiCredentials implements EuLoginApiCredentialsInterface
         return (array) $payload;
     }
 
+    #[Override]
     public function hasPopToken(RequestInterface $request): bool
     {
         return $this->euLoginApiCredentials->hasPopToken($request);
@@ -134,12 +136,5 @@ final class LocalEuLoginApiCredentials implements EuLoginApiCredentialsInterface
         }
 
         return $headerParts[1];
-    }
-
-    private function getTokenVerifier(array $payload): TokenVerifierInterface
-    {
-        $verifierBuilder = new EuLoginApiAccessTokenVerifierBuilder();
-
-        return $verifierBuilder->build();
     }
 }
