@@ -5,10 +5,32 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.5](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/1.0.4...1.0.5)
+## [1.0.6](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/1.0.5...1.0.6)
+
+### Merged
+
+- chore(deps): Bump actions/stale from 8 to 9 [`#51`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/51)
+- chore(deps): Bump ramsey/composer-install from 2 to 3 [`#52`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/52)
+- Symfony 7 compatibility, bump, refactoring [`#53`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/53)
+- chore(deps): Bump actions/checkout from 3 to 4 [`#50`](https://github.com/ecphp/eu-login-api-authentication-bundle/pull/50)
 
 ### Commits
 
+- chore: modernize, partially fix static analysis (psalm) [`556480b`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/556480bc1637d6e9e392c171718daa25fbd1a472)
+- chore: update static files [`e987a2a`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/e987a2a963ec634078bc1e3417fd35b2a7fc4792)
+- refactor: `composer.json` bumps, code style, symfony 7 compatibility [`a2b57a5`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/a2b57a580b53bfb323bf09aa90a0dc0d8a1ff77a)
+- chore: update default PHP version for development and License file [`99e6dcf`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/99e6dcf5a7087d19d331d9dede152f50288048f5)
+- chore: add `.readthedocs.yml` config [`b681b2d`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/b681b2d455748eb78037a7039e2969346aaf0845)
+- ci: get rid of scrutinizer [`e707276`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/e707276f4f4de74009f7d420b8b531124ffbdb54)
+- Revert "refactor: fix deprecation" [`a02cf42`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/a02cf42bc56788bb0e4a5e9833d0acc5c9e92cb4)
+- refactor: fix deprecation [`cc4ebf7`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/cc4ebf79ef4700f96c9e19e19f19c2790db52770)
+- tests: fix tests [`5a090d1`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/5a090d1de46ff8f4aac33b6f617ff0024261b504)
+
+## [1.0.5](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/1.0.4...1.0.5) - 2023-05-04
+
+### Commits
+
+- docs: Update changelog. [`48106cb`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/48106cb0a6fef6f84ebfe3c7a982d393dd320244)
 - refactor: remove custom services names. Use class FQDN instead. [`e0b6938`](https://github.com/ecphp/eu-login-api-authentication-bundle/commit/e0b69388e7536d997816951718f7b3c1267fb1ec)
 
 ## [1.0.4](https://github.com/ecphp/eu-login-api-authentication-bundle/compare/1.0.3...1.0.4) - 2023-04-25
